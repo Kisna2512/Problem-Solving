@@ -1,0 +1,88 @@
+Problem Link:- https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/
+
+solution:  Java
+
+class Solution
+{
+public
+    int minDominoRotations(int[] tops, int[] bottoms)
+    {
+        int cnt1 = 0, cnt2 = 0, cnt3 = 0, cnt4 = 0;
+
+        int num1 = tops[0];
+        int num2 = bottoms[0];
+
+        for (int i = 0; i < tops.length; i++)
+        {
+
+            if (cnt1 != Integer.MAX_VALUE)
+            {
+                if (tops[i] == num1)
+                {
+                }
+                else if (bottoms[i] == num1)
+                {
+                    cnt1++;
+                }
+                else
+                {
+                    cnt1 = Integer.MAX_VALUE;
+                }
+            }
+
+            if (cnt2 != Integer.MAX_VALUE)
+            {
+                if (bottoms[i] == num1)
+                {
+                }
+                else if (tops[i] == num1)
+                {
+                    cnt2++;
+                }
+                else
+                {
+                    cnt2 = Integer.MAX_VALUE;
+                }
+            }
+            if (cnt3 != Integer.MAX_VALUE)
+            {
+                if (tops[i] == num2)
+                {
+                }
+                else if (bottoms[i] == num2)
+                {
+                    cnt3++;
+                }
+                else
+                {
+                    cnt3 = Integer.MAX_VALUE;
+                }
+            }
+
+            if (cnt4 != Integer.MAX_VALUE)
+            {
+                if (bottoms[i] == num2)
+                {
+                }
+                else if (tops[i] == num2)
+                {
+                    cnt4++;
+                }
+                else
+                {
+                    cnt4 = Integer.MAX_VALUE;
+                }
+            }
+        }
+
+        int ans = Math.min(Math.min(cnt1, cnt2), Math.min(cnt3, cnt4));
+        if (ans == Integer.MAX_VALUE)
+        {
+            return -1;
+        }
+        else
+        {
+            return ans;
+        }
+    }
+}

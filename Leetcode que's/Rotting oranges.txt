@@ -1,0 +1,124 @@
+Amazon favorite problem
+
+problem link:-https://leetcode.com/problems/rotting-oranges/
+
+
+
+
+
+
+solution:- 
+
+
+struct node{
+    int x,y,time;
+    node(int x_,int y_,int time_)
+    {
+        x=x_;
+        y=y_;
+        time=time_;
+    }
+};
+
+
+
+class Solution {
+public:
+    int orangesRotting(vector<vector<int>>& grid) {
+        int n=grid.size();
+        int m=grid[0].size();
+        
+        queue<node> q;
+        int cntoranges=0;
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(grid[i][j]==2)
+                {
+                    q.push(node(i,j,0));
+                }
+                if(grid[i][j]!=0)
+                {
+                    cntoranges++;
+                }
+            }
+        }
+        
+        int ans=0;
+        int cnt=0;
+        
+        
+        
+    while(!q.empty())
+    {
+        int x=q.front().x;
+        int y=q.front().y;
+        int time=q.front().time;
+        
+        q.pop();
+        
+        
+        cnt++;
+        
+        
+        
+        
+        
+        ans=max(ans,time);
+        
+        int dx[]={-1,0,1,0};
+        int dy[]={0,1,0,-1};
+        
+        
+        for(int ind=0;ind<4;ind++)
+        {
+            int newx=x+dx[ind];
+            int newy=y+dy[ind];
+            
+            
+            if(newx >= 0 && newx < n && newy >=0 && newy<m && grid[newx][newy]==1 )
+            {
+                grid[newx][newy]=2;
+                q.push(node(newx,newy,time+1));
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+        
+        
+        
+       if(cnt==cntoranges)
+       {
+           return ans;
+       }
+        else
+        {
+            return -1;
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+    }
+};

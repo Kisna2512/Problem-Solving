@@ -1,0 +1,50 @@
+Problem link:-https://leetcode.com/problems/maximum-frequency-stack/
+
+solution:-
+class FreqStack {
+public:
+    
+    int max_frequency;
+    unordered_map<int,int> freq_mp;
+    unordered_map<int,stack<int>> freq_stack_mp;
+
+    FreqStack() {
+        max_frequency=0;
+    }
+    
+    void push(int val) {
+        
+        ++freq_mp[val];
+        
+        if(max_frequency < freq_mp[val]) max_frequency=freq_mp[val];
+        
+        freq_stack_mp[freq_mp[val]].push(val);
+    
+        
+    }
+    
+    int pop() {
+        
+        int curr_top=freq_stack_mp[max_frequency].top();
+         freq_stack_mp[max_frequency].pop();
+        --freq_mp[curr_top];
+        
+         if(freq_stack_mp[max_frequency].empty()) {
+            freq_stack_mp.erase(max_frequency);
+            --max_frequency;
+        }
+        
+        // return the current top element
+        return curr_top;
+   
+        
+    }
+};
+
+/**
+ * Your FreqStack object will be instantiated and called as such:
+ * FreqStack* obj = new FreqStack();
+ * obj->push(val);
+ * int param_2 = obj->pop();
+ */
+

@@ -1,0 +1,75 @@
+class Solution {
+public:
+    bool ispalindrome(string s)
+    {
+        int low=0;
+        int high=s.size()-1;
+        
+        while(low <= high)
+        {
+            if(s[low]!=s[high])
+            {
+                return false;
+                break;
+            }
+        }
+        return true;
+        
+        
+    }
+    bool validPalindrome(string s) {
+        int n=s.size();
+        int low=0;
+        int high=n-1;
+        int cnt=0;
+        while(low <= high)
+        {
+            if(s[low]==s[high])
+            {
+              low++;
+              high--;
+            }
+            else
+            {
+               cnt++;
+                low++;
+            }
+       //a a
+            // cout<<"Low:- "<<low<<endl;
+            
+        }
+        // cout<<cnt<<endl;
+        // cout<<"low:- "<<low<<endl;
+        low=0;
+        high=n-1;
+        int cnt1=0;
+         while(low <= high)
+        {
+            if(s[low]==s[high])
+            {
+             low++;
+            high--; 
+            }
+             else
+             {
+                 cnt1++;
+                 high--;
+             }
+            
+        }
+
+       if(cnt == 0 || cnt1==0)
+       {
+           return true;
+       }
+        else if(cnt==1 || cnt1==1)
+        {
+            return true;
+        }
+        else
+       {
+           return false;
+       }
+        
+    }
+};
