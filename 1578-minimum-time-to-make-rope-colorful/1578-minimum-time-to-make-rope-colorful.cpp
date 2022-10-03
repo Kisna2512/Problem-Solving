@@ -1,8 +1,6 @@
 class Solution {
 public:
     int minCost(string colors, vector<int>& neededTime) {
-        
-        
         int second=0;
         
         for(int i=1;i<colors.size();i++)
