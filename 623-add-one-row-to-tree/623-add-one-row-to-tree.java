@@ -30,6 +30,7 @@ class Solution {
         
         while(sdepth++ < depth)
         {
+            System.out.println("krishna");
             int size=q.size();
             while(size-- > 0)
             {
