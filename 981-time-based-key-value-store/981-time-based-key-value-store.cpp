@@ -13,6 +13,7 @@ public:
     
     string get(string key, int timestamp) {
           auto it = m[key].upper_bound(timestamp);
+          
           return it == m[key].begin() ? "" : prev(it)->second;
     }
 };
