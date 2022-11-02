@@ -38,13 +38,25 @@ class Solution {
     
     }
     
-    
-    
-    
-    
-    
-    
-    
+    bool detectdfs(int src,int parent,vector<int> adj[],int vis[])
+    {
+        vis[src]=true;
+        
+        
+        for(auto it:adj[src])
+        {
+            if(!vis[it])
+            {
+                if(detectdfs(it,src,adj,vis)){return true;}
+            }else if(parent!=it)
+            {
+                return true;
+            }
+        }
+        
+       return false; 
+    }
+
     bool isCycle(int V, vector<int> adj[]) {
         int vis[V]={0};
         
@@ -54,23 +66,12 @@ class Solution {
         {
             if(vis[i]==0)
             {
-                if(detect(i,adj,vis))
+                if(detectdfs(i,-1,adj,vis))
                 {
                     return true;
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         return false;
     }
 };
